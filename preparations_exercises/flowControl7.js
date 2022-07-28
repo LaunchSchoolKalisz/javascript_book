@@ -2,6 +2,8 @@
 
 function capitalizeLongWords(phrase) {
   if (phrase.length > 10) {
-    phrase.toUpperCase
-  } 
+    return phrase.toUpperCase
+  } else {
+    return phrase
+  }
 }
