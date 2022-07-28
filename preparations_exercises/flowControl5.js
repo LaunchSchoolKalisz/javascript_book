@@ -1,7 +1,7 @@
-return foo() ? 'bar' : qux();
+foo() ? 'bar' : qux();
 
 if (foo()) {
-  return 'bar'
+  'bar'
 } else {
-  return qux()
+  qux()
 };
