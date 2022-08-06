@@ -1,3 +1,6 @@
 userAge = 20
 console.log(`You are ${userAge} years old.`)
-console.log(`In 10 years you will be ${userAge + 10}`)
+
+for (let years = 10; years < 50; years += 10) {
+  console.log(`In ${years} years you will be ${userAge + years}`)
+}
