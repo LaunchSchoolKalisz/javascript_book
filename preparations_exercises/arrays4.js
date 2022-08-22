@@ -14,3 +14,23 @@ myArray.map( (num, idx) => {
 })
 
 console.log(evenOrOdd);
+
+// LS solutions
+
+// let newArray = myArray.map(function(value) {
+//   if (value % 2 === 0) {
+//     return 'even';
+//   } else {
+//     return 'odd';
+//   }
+// });
+
+// let newArray = [];
+// for (let i = 0; i < myArray.length; i += 1) {
+//   let value = myArray[i];
+//   if (value % 2 === 0) {
+//     newArray.push('even');
+//   } else {
+//     newArray.push('odd');
+//   }
+// }
