@@ -1,66 +1,54 @@
 =begin
-30. Anagram difference
-(https://www.codewars.com/kata/5b1b27c8f60e99a467000041)
-6 kyu
-Given two words, how many letters do you have to remove from them to make them anagrams?
+Given a string of integers, return the number of odd-numbered substrings that can be formed.
 
-Example
-First word : c od e w ar s (4 letters removed)
-Second word : ha c k er r a nk (6 letters removed)
-Result : 10
-Hints
-A word is an anagram of another word if they have the same letters (usually in a different order).
-Do not worry about case. All inputs will be lowercase.
+For example, in the case of "1341", they are 1, 1, 3, 13, 41, 341, 1341, a total of 7 numbers.
 
-Problem: given 2 strings, remove 1 letter until they are anagrams
- - anagram: a word with all of the same letters, and the same number of letters
+solve("1341") = 7. See test cases for more examples.
 
-Example
-  - codewars, hackerrank
-    - , hkrank
-    - c e a r
-    - o d w s hkrank
+# Problem: given a string of integers, create an array of every possible consecutive substring, and select only the odd numbers. There can be doubles. return the correct number of odd substrings
 
-Data 
- - strings, arrays, integers
+# Example
+1341 -> 1 3 4 1 13 41 134 341 1341 -> 1 3 1 13 41 341 1341 -> 7
 
-Algorithm
-- given 2 strings
-- create a result, intialized to 0
-- determine larger of the 2 strings
-- split the smaller of the 2 into characters
-  - iterate through the smaller string, and check to see if that character is included in the larger. 
-  - If it is included, remove it from the larger
-  - If it is not included, increment a count of letters to remove
-- whatever letters are left in the larger string after the iteration, count those and add to the result count
-- return the result count
+# Data: strings, arrays, integer
+
+Algo
+- Given a string, find every possible consecutive substring
+- Select only the odd substrings
+- Count the number of odd substrings, and return that value
 =end
 
-def anagram_difference(string1, string2)
-  result_count = 0
-  if string1.length > string2.length
-    larger_string = string1
-    smaller_string = string2
-  else
-    larger_string = string2
-    smaller_string = string1
+# def solve(integer_string)
+#   array_of_substrings = []
+#   idx1 = 0
+#   idx2 = 0
+#   loop do 
+#     loop do 
+#      array_of_substrings << integer_string[idx1..idx2]
+#      break if idx2 >= integer_string.length - 1
+#      idx2 += 1 
+#     end
+#     idx1 += 1
+#     idx2 = idx1
+#     break if idx1 >= integer_string.length
+#   end
+#   odd_substrings = array_of_substrings.select {|subst| subst.to_i.odd?}
+#   p odd_substrings.size
+# end
+
+def solve(integer_string)
+  array_of_substrings = []
+  size = 1
+  integer_string.chars.each_cons(size) do |subst|
+    array_of_substrings << subst
   end
-  smaller_string.chars.each do |letter|
-    if larger_string.include?(letter)
-      larger_string.sub!(letter, "")
-    else
-      result_count += 1
-    end
-  end
-   result_count + larger_string.length
+  p array_of_substrings
 end
 
-p anagram_difference('', '') == 0
-p anagram_difference('a', '') == 1
-p anagram_difference('', 'a') == 1
-p anagram_difference('ab', 'a') == 1
-p anagram_difference('ab', 'ba') == 0
-p anagram_difference('ab', 'cd') == 4
-p anagram_difference('aab', 'a') == 2
-p anagram_difference('a', 'aab') == 2
-p anagram_difference('codewars', 'hackerrank') == 10
+p solve("1341") == 7
+# p solve("1357") == 10
+# p solve("13471") == 12
+# p solve("134721") == 13
+# p solve("1347231") == 20
+# p solve("13472315") == 28
+
