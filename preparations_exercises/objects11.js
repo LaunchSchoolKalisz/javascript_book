@@ -7,3 +7,6 @@ let obj = {
 obj['bar'][3]['xyz'] = 606
 
 console.log(obj)
+
+// LS Solution
+// obj.bar[3].xyz = 606;
